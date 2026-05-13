@@ -212,7 +212,7 @@
 
     function buildWaUrl(codigo) {
       const msg = encodeURIComponent(
-        `Hola Mime! Vi la tarjetita en mi pedido \u{1F499} Me quiero pasar a pedir con ustedes directamente. Mi código: ${codigo}`
+        "Hola Mime! Vi la tarjetita en mi pedido 💙 Me quiero pasar a pedir con ustedes directamente. Mi código: " + codigo
       );
       return `https://wa.me/${WA_NUMBER}?text=${msg}`;
     }
