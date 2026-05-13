@@ -37,23 +37,12 @@
       text-align: center;
       margin-bottom: 2.5rem;
     }
-    .logo-cafe, .logo-patisserie {
-      font-family: 'Work Sans', sans-serif;
-      font-weight: 300;
-      font-size: 0.7rem;
-      letter-spacing: 0.35em;
-      color: rgba(255,255,255,0.7);
-      text-transform: uppercase;
+    .logo-wrap img {
+      width: clamp(140px, 40vw, 200px);
+      height: auto;
+      display: block;
+      margin: 0 auto;
     }
-    .logo-main {
-      font-family: 'Crimson Pro', serif;
-      font-weight: 400;
-      font-size: clamp(2.2rem, 8vw, 3.2rem);
-      color: var(--white);
-      line-height: 1.0;
-      letter-spacing: 0.02em;
-    }
-    .logo-patisserie { margin-top: 0.2rem; }
 
     /* ── Card ─────────────────────────────────────────── */
     .card {
@@ -157,9 +146,7 @@
 
   <!-- Logo -->
   <div class="logo-wrap">
-    <div class="logo-cafe">Café</div>
-    <div class="logo-main">MIME<br>SUCRÉ</div>
-    <div class="logo-patisserie">Patisserie</div>
+    <img src="logo.png" alt="MIME SUCRÉ" />
   </div>
 
   <!-- Card de estado -->
@@ -225,7 +212,7 @@
 
     function buildWaUrl(codigo) {
       const msg = encodeURIComponent(
-        `Hola Mime! Vi la tarjetita en mi pedido 💙 Me quiero pasar a pedir con ustedes directamente. Mi código: ${codigo}`
+        `Hola Mime! Vi la tarjetita en mi pedido \u{1F499} Me quiero pasar a pedir con ustedes directamente. Mi código: ${codigo}`
       );
       return `https://wa.me/${WA_NUMBER}?text=${msg}`;
     }
