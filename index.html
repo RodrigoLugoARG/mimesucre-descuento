@@ -211,11 +211,8 @@
     }
 
     function buildWaUrl(codigo) {
-      const msg = encodeURIComponent("Hola Mime! Vi la tarjetita en mi pedido ")
-        + "%F0%9F%92%99"
-        + encodeURIComponent(" Me quiero pasar a pedir con ustedes directamente. Mi código: ")
-        + encodeURIComponent(codigo);
-      return "https://wa.me/" + WA_NUMBER + "?text=" + msg;
+      const msg = "Hola Mime! Vi la tarjetita en mi pedido 💙 Me quiero pasar a pedir con ustedes directamente. Mi código: " + codigo;
+      return "https://wa.me/" + WA_NUMBER + "?text=" + encodeURIComponent(msg);
     }
 
     async function validarCodigo(codigo) {
