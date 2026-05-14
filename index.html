@@ -203,7 +203,7 @@
   <script>
     const WA_NUMBER = "5493794007751";
     // ⚠️ Reemplazar con la URL de tu Google Apps Script deployment:
-    const API_URL = "https://script.google.com/macros/s/AKfycbwll7Jf0GfNHQJN1kRketVlSvIiFYmTHgu_CxtDM3w32kJzaPyx2GqNQ-xHjdX5gIWd/exec";
+    const API_URL = "https://script.google.com/macros/s/AKfycby-vyg5e8sMPuA-DstEE-zRGTHdj5bWVOu0LJr3FwLo4j4QjU8g_-LRzSQgc7m0FBAp/exec";
 
     function showState(id) {
       document.querySelectorAll('.state').forEach(el => el.classList.remove('active'));
@@ -247,7 +247,14 @@
 
       if (result.ok && result.estado === 'valido') {
         document.getElementById('badge-codigo').textContent = codigo;
-        document.getElementById('btn-wa').href = buildWaUrl(codigo);
+
+        // Al tocar el botón → primero canjear (marcar usado), luego abrir WA
+        document.getElementById('btn-wa').addEventListener('click', async function(e) {
+          e.preventDefault();
+          await fetch(`${API_URL}?action=canjear&codigo=${encodeURIComponent(codigo)}`);
+          window.location.href = buildWaUrl(codigo);
+        });
+
         showState('state-valido');
 
       } else if (result.estado === 'usado') {
