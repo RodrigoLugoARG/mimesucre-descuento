@@ -244,7 +244,7 @@
 
     function buildWaUrl(codigo) {
       const heart = String.fromCodePoint(0x1F499); // 💙
-      const msg = "Hola Mime! Vi la tarjetita en mi pedido " + heart + " Me quiero pasar a pedir con ustedes directamente. Mi código: " + codigo;
+      const msg = "Hola Mime!\nVi la tarjetita en mi pedido " + heart + "\nMe quiero pasar con Uds directamente.\nMi código es: " + codigo;
       const encoded = encodeURIComponent(msg);
       // En mobile usamos el esquema nativo de WhatsApp (bypasea el redirect web)
       const isMobile = /Mobi|Android|iPhone|iPad/i.test(navigator.userAgent);
