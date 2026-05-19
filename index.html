@@ -5,6 +5,28 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>MIME SUCRÉ — Descuento directo</title>
 
+  <!-- ================================================================
+       META PIXEL — tracking de visitas + retargeting de ads
+       Pixel ID: 998635235946179 (Mime Sucre Pixel, Events Manager)
+       Eventos custom: ViewContent (código válido), Lead (canje)
+       ================================================================ -->
+  <script>
+    !function(f,b,e,v,n,t,s)
+    {if(f.fbq)return;n=f.fbq=function(){n.callMethod?
+    n.callMethod.apply(n,arguments):n.queue.push(arguments)};
+    if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';
+    n.queue=[];t=b.createElement(e);t.async=!0;
+    t.src=v;s=b.getElementsByTagName(e)[0];
+    s.parentNode.insertBefore(t,s)}(window, document,'script',
+    'https://connect.facebook.net/en_US/fbevents.js');
+    fbq('init', '998635235946179');
+    fbq('track', 'PageView');
+  </script>
+  <noscript><img height="1" width="1" style="display:none"
+    src="https://www.facebook.com/tr?id=998635235946179&ev=PageView&noscript=1"
+  /></noscript>
+  <!-- End Meta Pixel -->
+
   <!-- Fuentes brand -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -280,6 +302,11 @@
       if (result.ok && result.estado === 'valido') {
         document.getElementById('badge-codigo').textContent = codigo;
 
+        // 📊 Meta Pixel — código válido visto (señal de intención inicial)
+        if (typeof fbq !== 'undefined') {
+          fbq('track', 'ViewContent', { content_name: 'codigo_valido', content_category: 'tarjeta_descuento' });
+        }
+
         // Paso 1: Reservar → llama canjear y muestra botón WA
         document.getElementById('btn-reservar').addEventListener('click', async function() {
           this.disabled = true;
@@ -287,6 +314,12 @@
           await fetch(`${API_URL}?action=canjear&codigo=${encodeURIComponent(codigo)}`);
           document.getElementById('badge-codigo-2').textContent = codigo;
           document.getElementById('btn-wa').href = buildWaUrl(codigo);
+
+          // 📊 Meta Pixel — Lead caliente: canjeó el código y va a WhatsApp
+          if (typeof fbq !== 'undefined') {
+            fbq('track', 'Lead', { content_name: 'canje_completado', content_category: 'tarjeta_descuento' });
+          }
+
           showState('state-reservado');
         });
 
