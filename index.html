@@ -172,6 +172,18 @@
     .btn-reservar:hover { opacity: 0.85; }
 
     /* ── Footer ───────────────────────────────────────── */
+    .footer-legal {
+      font-size: 0.95rem;
+      letter-spacing: 0.06em;
+      color: #ffffff;
+      font-weight: 600;
+      margin-bottom: 0.35rem;
+    }
+    .footer-datos {
+      font-size: 0.8rem;
+      letter-spacing: 0.04em;
+      color: rgba(255,255,255,0.85);
+    }
     .footer {
       margin-top: 2rem;
       font-family: 'Work Sans', sans-serif;
@@ -179,6 +191,8 @@
       letter-spacing: 0.1em;
       color: rgba(255,255,255,0.35);
       text-transform: uppercase;
+      text-align: center;
+      line-height: 1.5;
     }
 
     /* ── Firma de marca ───────────────────────────────── */
@@ -191,6 +205,25 @@
       text-transform: uppercase;
     }
   </style>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Bakery",
+  "name": "Mime Sucré",
+  "legalName": "POTAVE S.R.L.",
+  "taxID": "30-71464839-6",
+  "telephone": "+5493794007751",
+  "url": "https://d.mimesucre.com.ar/",
+  "address": {
+    "@type": "PostalAddress",
+    "streetAddress": "Córdoba 1050, Local B",
+    "addressLocality": "Corrientes",
+    "addressRegion": "Corrientes",
+    "postalCode": "3400",
+    "addressCountry": "AR"
+  }
+}
+</script>
 </head>
 <body>
 
@@ -292,7 +325,10 @@
 
   </div>
 
-  <div class="footer">POTAVE S.R.L. · mimesucre · córdoba 1050 · corrientes</div>
+  <div class="footer">
+    <div class="footer-legal">POTAVE S.R.L. · CUIT 30-71464839-6</div>
+    <div class="footer-datos">Mime Sucré · Córdoba 1050, Local B · Corrientes · +54 9 3794 00-7751</div>
+  </div>
 
   <script>
     const WA_NUMBER = "5493794007751";
